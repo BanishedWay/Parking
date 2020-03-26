@@ -31,7 +31,7 @@ void Arrive(Parking *p, linkqueue *Q, int cont)
 	if (cont == 0)//从外部进入停车场和等待区域
 	{
 		printf("请输入车辆信息：\n");
-		printf("请输入车牌号：");
+		printf("请输入车牌号：\n");
 		scanf("%s", c->num);
 		if (p->length < MAXN)
 		{
@@ -90,7 +90,7 @@ void Arrive(Parking *p, linkqueue *Q, int cont)
 void Leave(Parking *p, linkqueue *Q)
 {
 	int i;
-	printf("请输入车停靠的位置：\n");
+	printf("请输入车停靠的位置：\n\n");
 	scanf("%d", &i);
 	time_t time_p;
 	struct tm* temp;
@@ -102,7 +102,7 @@ void Leave(Parking *p, linkqueue *Q)
 	Print(p->car[i - 1]);
 	if (Q->front == Q->rear)
 	{
-		printf("等待队列中无车\n");
+		printf("等待队列中无车\n\n");
 	}
 	else
 	{
@@ -112,9 +112,9 @@ void Leave(Parking *p, linkqueue *Q)
 
 void Print(Cnode c)
 {
-	printf("离开车的车牌号：%s\n", c->num);
-	printf("离开车的进入时间：%d\n", c->arrive_time);
-	printf("离开车的离开时间：%d\n", c->leave_time);
+	printf("离开车的车牌号：%s\n\n", c->num);
+	printf("离开车的进入时间：%d\n\n", c->arrive_time);
+	printf("离开车的离开时间：%d\n\n", c->leave_time);
 	int charge = c->leave_time - c->arrive_time;
 	printf("停车花费：%d 元\n", charge);
 	free(c);
@@ -124,13 +124,13 @@ void List(Parking *p)
 {
 	if (p->length > 0)
 	{
-		printf("停车信息表：\n");
+		printf("停车信息表：\n\n");
 		for (int i = 0; i < p->length; i++)
 		{
-			printf("第%d辆车：车牌号：%s,进入时间：%d。\n", i + 1, p->car[i]->num, p->car[i]->arrive_time);
+			printf("第%d辆车：, 车牌号： %s, 进入时间： %d。\n\n", i + 1, p->car[i]->num, p->car[i]->arrive_time);
 		}
 	}
 	else
-		printf("停车场内没有车。\n");
-	printf("收费记录表：\n");
+		printf("停车场内没有车。\n\n");
+	printf("收费记录表：\n\n");
 }
